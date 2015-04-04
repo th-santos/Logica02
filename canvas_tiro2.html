@@ -1,0 +1,58 @@
+<meta charset = "UTF-8"/>
+
+<canvas id = "tela1" width = "500" height = "500"></canvas>
+
+<script>
+
+    var tela1 = document.getElementById("tela1");
+    var pincel = tela1.getContext("2d");
+
+    var desenhaTela = function(){
+
+        pincel.fillStyle = "gray";
+        pincel.fillRect(0, 0, tela1.width, tela1.height);   
+
+    }
+
+    var atirarBolaAzul = function(evento){
+
+        var coordenadaX = evento.pageX - tela1.offsetLeft;
+        var coordenadaY = evento.pageY - tela1.offsetTop;
+        var tamanhoBola = 10;
+        var anguloInicial = 0;
+        var anguloFinal = Math.PI;
+
+        pincel.fillStyle = "blue";
+        pincel.beginPath();
+        pincel.arc(coordenadaX, coordenadaY, tamanhoBola, anguloInicial, (anguloFinal * 2));
+        pincel.fill();
+
+        console.log("Botão esquerdo clicado. Coordenada X do clique: " + coordenadaX + ". Posição Y do clique: " + coordenadaY);
+
+    }
+
+    var atirarBolaVermelha = function(evento){
+
+        evento.preventDefault();
+
+        var coordenadaX = evento.pageX - tela1.offsetLeft;
+        var coordenadaY = evento.pageY - tela1.offsetTop;
+        var tamanhoBola = 10;
+        var anguloInicial = 0;
+        var anguloFinal = Math.PI;
+
+        pincel.fillStyle = "red";
+        pincel.beginPath();
+        pincel.arc(coordenadaX, coordenadaY, tamanhoBola, anguloInicial, (anguloFinal * 2));
+        pincel.fill();
+
+        console.log("Botão esquerdo clicado. Coordenada X do clique: " + coordenadaX + ". Posição Y do clique: " + coordenadaY);
+
+    }
+
+    desenhaTela();
+    tela1.onclick = atirarBolaAzul;
+    tela1.oncontextmenu = atirarBolaVermelha;
+
+
+</script>

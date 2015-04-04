@@ -1,0 +1,31 @@
+<canvas id="tela" width="600" height="600"></canvas>
+
+<script>
+var tela = document.getElementById("tela");
+var c = tela.getContext("2d");
+
+var circulo = function(cor, x, y, raio) {
+    c.strokeStyle = cor;
+    c.beginPath();
+    c.arc(x, y, raio, 0, 2 * Math.PI);
+    c.stroke();
+};
+
+var limpaTela = function() {
+    c.clearRect(0, 0, 600, 600);
+};
+
+var x = 300;
+var y = 300;
+var o = 1
+
+var desenha = function() {
+    circulo("blue", 300, 300, o);
+    circulo("red", 300, 300, 300 - o);
+	o = o + (Math.random()*3);
+	
+};
+
+setInterval(desenha, 30);
+
+</script>
